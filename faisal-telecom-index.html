@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101b35">
+<title>FAISAL TELECOM | Mobile Price List</title>
+<style>
+:root{--navy:#101b35;--navy2:#172747;--gold:#f5bd45;--bg:#f3f6fb;--card:#fff;--text:#172033;--muted:#738096;--line:#e5eaf2;--green:#138a55;--red:#d94343;--blue:#2866c7;--shadow:0 8px 26px rgba(20,39,72,.08)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,"Noto Sans Bengali",sans-serif}
+header{background:linear-gradient(125deg,var(--navy),#20375f);color:#fff;position:sticky;top:0;z-index:10;box-shadow:0 5px 20px #0c19352a}
+.top{max-width:1180px;margin:auto;padding:17px 16px 13px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:11px}.logo-mark{width:43px;height:43px;border-radius:13px;background:var(--gold);color:var(--navy);display:grid;place-items:center;font-weight:900;font-size:20px;box-shadow:0 4px 12px #0003}.brand-name{font-weight:900;font-size:21px;letter-spacing:.7px}.tagline{font-size:11px;color:#c7d2e4;margin-top:3px;letter-spacing:1.2px}
+.actions{display:flex;gap:8px}.icon-btn{border:1px solid #ffffff40;background:#ffffff12;color:white;border-radius:10px;padding:9px 11px;cursor:pointer}
+.offer{background:var(--gold);color:#172033;font-weight:700;font-size:12px;padding:8px 12px;text-align:center;overflow:hidden;white-space:nowrap}
+main{max-width:1180px;margin:20px auto;padding:0 14px}
+.hero{background:linear-gradient(120deg,#fff,#f8faff);border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;align-items:center;justify-content:space-between;gap:15px;box-shadow:var(--shadow)}
+.hero h1{margin:0 0 7px;font-size:22px;color:var(--navy)}.hero p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}.live{font-size:11px;color:var(--green);font-weight:800;white-space:nowrap}.live:before{content:"";display:inline-block;width:7px;height:7px;background:#19ad69;border-radius:50%;margin-right:6px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}.stat{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:13px 15px;box-shadow:0 3px 12px #14274808}.stat small{display:block;color:var(--muted);font-size:11px;margin-bottom:6px}.stat strong{font-size:21px;color:var(--navy)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow);margin-bottom:15px}
+.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}.section-head h2{font-size:15px;margin:0;color:var(--navy)}.section-head span{font-size:11px;color:var(--muted)}
+.brands{display:flex;flex-wrap:wrap;gap:8px}.brand-btn{border:1px solid var(--line);background:#f8faff;color:#34415a;border-radius:9px;padding:9px 12px;font-size:12px;font-weight:700;cursor:pointer;transition:.18s}.brand-btn:hover{border-color:#c5a04c}.brand-btn.active{background:var(--navy);border-color:var(--navy);color:#fff;box-shadow:0 4px 10px #101b3528}
+.search-row{display:flex;gap:9px;margin:0 0 13px}.search{width:100%;border:1px solid var(--line);border-radius:11px;padding:13px 14px;font-size:14px;outline:none;background:#fbfcff}.search:focus{border-color:#7895c7;box-shadow:0 0 0 3px #2866c714}.clear{border:0;border-radius:10px;background:#edf1f7;color:#34415a;padding:0 15px;font-weight:700;cursor:pointer}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}table{width:100%;border-collapse:collapse;min-width:570px}th{background:#f1f4f9;color:#53627a;font-size:11px;text-align:left;padding:12px 13px;letter-spacing:.3px}td{padding:13px;border-top:1px solid var(--line);font-size:13px}tbody tr:hover{background:#fafcff}.model{font-weight:750;color:#1a2944}.price{font-weight:800;color:var(--navy);white-space:nowrap}.pill{display:inline-block;border-radius:6px;padding:5px 8px;font-size:10px;font-weight:800}.box-yes{background:#e6f6ee;color:#147b4c}.box-no{background:#fff0e7;color:#b65a1a}.stock{background:#e9f0ff;color:#285bb1}.out{background:#ffebeb;color:#c33333}.copy{background:#eaf1ff;color:#2866c7;border:0;cursor:pointer}
+.empty,.loading,.error{padding:28px 12px;text-align:center;color:var(--muted);font-size:13px}.error{color:var(--red)}footer{text-align:center;color:#8792a4;font-size:11px;padding:20px 10px 30px}
+body.dark{--bg:#0c1424;--card:#131f34;--text:#e8edf7;--muted:#9ba9bf;--line:#273650;--navy:#e7edf8;--shadow:0 8px 26px #0003}body.dark .hero{background:#131f34}body.dark .hero h1,body.dark .stat strong,body.dark .section-head h2,body.dark .price{color:#edf2fb}body.dark .brand-btn{background:#18263e;color:#dbe5f5;border-color:#2a3b59}body.dark .brand-btn.active{background:#e9b94e;color:#172033}body.dark .search{background:#0f1a2d;color:#fff;border-color:#2a3b59}body.dark th{background:#1b2a43;color:#b9c7db}body.dark tbody tr:hover{background:#192842}body.dark .copy{background:#1c3155;color:#a9caff}body.dark .clear{background:#253550;color:#e4ecf8}
+@media(max-width:650px){.top{padding:13px 12px}.brand-name{font-size:17px}.logo-mark{width:39px;height:39px}.hero{padding:16px}.hero h1{font-size:18px}.stats{gap:7px}.stat{padding:11px}.stat strong{font-size:18px}.panel{padding:13px}.brand-btn{padding:8px 10px;font-size:11px}.actions .icon-btn{padding:8px}.live{font-size:10px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="top">
+  <div class="logo"><div class="logo-mark">FT</div><div><div class="brand-name">FAISAL TELECOM</div><div class="tagline">MOBILE PRICE & STOCK LIST</div></div></div>
+  <div class="actions"><button class="icon-btn" id="refreshBtn" title="Refresh">↻</button><button class="icon-btn" id="themeBtn" title="Dark mode">☾</button></div>
+ </div>
+ <div class="offer">WELCOME TO FAISAL TELECOM&nbsp; • &nbsp;LATEST MOBILE MODEL & PRICE LIST&nbsp; • &nbsp;UPDATED FROM GOOGLE SHEETS</div>
+</header>
+<main>
+ <section class="hero"><div><h1>মোবাইল মডেল ও দাম খুঁজুন</h1><p>আপনার পছন্দের ব্র্যান্ড নির্বাচন করুন অথবা মডেলের নাম লিখে সার্চ করুন।</p></div><div class="live">LIVE PRICE LIST</div></section>
+ <div class="stats">
+  <div class="stat"><small>মোট মডেল</small><strong id="totalCount">০</strong></div>
+  <div class="stat"><small>নির্বাচিত ব্র্যান্ড</small><strong id="brandCount">১৪</strong></div>
+  <div class="stat"><small>দেখানো মডেল</small><strong id="shownCount">০</strong></div>
+ </div>
+ <section class="panel">
+  <div class="section-head"><h2>ব্র্যান্ড নির্বাচন করুন</h2><span id="brandLabel">সব ব্র্যান্ড</span></div>
+  <div class="brands" id="brandButtons"></div>
+ </section>
+ <section class="panel">
+  <div class="section-head"><h2 id="listTitle">সকল ব্র্যান্ডের মডেল</h2><span id="statusText">ডেটা লোড হচ্ছে...</span></div>
+  <div class="search-row"><input id="searchInput" class="search" type="search" placeholder="মডেলের নাম লিখে সার্চ করুন..."><button class="clear" id="clearBtn">Clear</button></div>
+  <div class="table-wrap"><table><thead><tr><th>MODEL</th><th>PRICE</th><th>BOX</th><th>STATUS</th><th></th></tr></thead><tbody id="productRows"><tr><td colspan="5" class="loading">Google Sheets থেকে ডেটা লোড হচ্ছে...</td></tr></tbody></table></div>
+ </section>
+</main>
+<footer>© <span id="year"></span> FAISAL TELECOM · All Rights Reserved</footer>
+<script>
+const SHEETS = [
+ {name:"Samsung",id:"1tJmBIN94tOU94oWvLerg7hhtSMj3Y2XE1WbObtqLBcY"},
+ {name:"Redmi / Xiaomi / Poco",id:"1c3fAf14_4LPjwwyhC_o4gcy1gUkZZRXQkYUGfdklhwU"},
+ {name:"Vivo",id:"1iz0L2L6j5JdpveNlQAoWr8byLdxf6vI1YmqgPcN-CLE"},
+ {name:"Oppo / Realme",id:"12EKUm36cKzrZQzmuAJ5eRixOFmOgoTtjV5Rt3jgilKo"},
+ {name:"OnePlus",id:"129X_GaCTsj5GAOzfPf-po4Vq_kIy_DFYMPSf7ezJQZo"},
+ {name:"Huawei",id:"1p63MyaipRDmgOu7ks_0isw4vAdMhfEJXIZLS_dyqfqk"},
+ {name:"Tecno / Infinix",id:"14LN5S2FRbcdaTaqIwCpGua15WorsbSxfSrFKVMu4YOg"},
+ {name:"Honor",id:"1wqxFM4lyjNcN_Mvu1xwxLcAn6ZcPfI3OUV2n7JYUoKs"},
+ {name:"Google Pixel",id:"1h0y7nMc0YMa-lDXlYmYQUK0-qd-lV9PskAxM-aKLs0s"},
+ {name:"Motorola",id:"1ofdnhDM8kvYMxMzTIBtB4A5r5vGsQOBPo9L85gYTiUs"},
+ {name:"Nokia",id:"1klloMEx-BJptoiLURG7atMZQX3gxr1_oxpliZzc1xcg"},
+ {name:"Symphony / Benco / itel",id:"1rQCD7h7JJJYMKwLMOLNYIp57KplVuVltd1GHG7AJSn8"},
+ {name:"Walton",id:"1nLkmCNbNWWAerjmhTmQr3J56q0waaIH-zNqoidA3dfM"},
+ {name:"iPhone",id:"1e5OjAfe1gz9D7WnvVyk7DyPX_p9-dXQ7aGS64flvTwc"}
+];
+const $=id=>document.getElementById(id);
+let allProducts=[],activeBrand="ALL",loadingErrors=[];
+const bn=n=>String(n).replace(/[0-9]/g,d=>"০১২৩৪৫৬৭৮৯"[+d]);
+function normalize(v){return String(v??"").trim().toLowerCase().replace(/[\s_-]+/g,"")}
+function pick(row,keys){const k=Object.keys(row||{});for(const wanted of keys){const found=k.find(x=>normalize(x)===normalize(wanted));if(found)return row[found]}return ""}
+function makeButtons(){
+ const box=$("brandButtons");
+ box.innerHTML="";
+ [{name:"সব ব্র্যান্ড",key:"ALL"},...SHEETS.map(s=>({name:s.name,key:s.name}))].forEach(b=>{
+  const btn=document.createElement("button");btn.className="brand-btn"+(activeBrand===b.key?" active":"");btn.textContent=b.name;
+  btn.onclick=()=>{activeBrand=b.key;makeButtons();render()};
+  box.appendChild(btn);
+ });
+}
+async function loadSheet(sheet){
+ const url=`https://opensheet.elk.sh/${sheet.id}/Sheet1`;
+ const res=await fetch(url,{cache:"no-store"});
+ if(!res.ok)throw new Error("HTTP "+res.status);
+ const data=await res.json();
+ if(!Array.isArray(data))throw new Error("Invalid sheet data");
+ return data.map(r=>({
+  brand:sheet.name,
+  model:pick(r,["Model","Mobile Model","Name"]),
+  price:pick(r,["Price"," দাম","Selling Price"]),
+  box:pick(r,["Box","Box Status"]),
+  status:pick(r,["Status","Stock","Availability"])
+ })).filter(r=>r.model);
+}
+async function loadAll(){
+ $("statusText").textContent="ডেটা লোড হচ্ছে...";
+ $("productRows").innerHTML='<tr><td colspan="5" class="loading">Google Sheets থেকে ডেটা লোড হচ্ছে...</td></tr>';
+ loadingErrors=[];
+ const results=await Promise.allSettled(SHEETS.map(loadSheet));
+ allProducts=[];
+ results.forEach((r,i)=>{if(r.status==="fulfilled")allProducts.push(...r.value);else loadingErrors.push(SHEETS[i].name)});
+ $("totalCount").textContent=bn(allProducts.length);
+ $("statusText").textContent=loadingErrors.length?`${loadingErrors.length}টি শিট লোড হয়নি`:"সর্বশেষ ডেটা";
+ render();
+}
+function safe(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function render(){
+ const q=$("searchInput").value.trim().toLowerCase();
+ const rows=allProducts.filter(p=>(activeBrand==="ALL"||p.brand===activeBrand)&&(`${p.model} ${p.brand}`.toLowerCase().includes(q)));
+ $("shownCount").textContent=bn(rows.length);
+ $("brandLabel").textContent=activeBrand==="ALL"?"সব ব্র্যান্ড":activeBrand;
+ $("listTitle").textContent=activeBrand==="ALL"?"সকল ব্র্যান্ডের মডেল":activeBrand+" মডেল";
+ if(!rows.length){$("productRows").innerHTML=`<tr><td colspan="5" class="empty">${allProducts.length?"কোনো মডেল পাওয়া যায়নি":"ডেটা পাওয়া যায়নি। Google Sheets sharing ও Sheet1 নাম পরীক্ষা করুন।"}</td></tr>`;return}
+ $("productRows").innerHTML=rows.map((p,i)=>{
+  const out=/out|নাই|শেষ|স্টক নেই/i.test(String(p.status));
+  const boxYes=/yes|হ্যাঁ|আছে|with/i.test(String(p.box));
+  const boxLabel=p.box?safe(p.box):"—";
+  const status=p.status?safe(p.status):(out?"STOCK OUT":"IN STOCK");
+  return `<tr><td><div class="model">${safe(p.model)}</div><div style="font-size:10px;color:var(--muted);margin-top:4px">${safe(p.brand)}</div></td><td class="price">${safe(p.price)||"দাম জানতে যোগাযোগ করুন"}</td><td><span class="pill ${boxYes?"box-yes":"stock"}">${boxLabel}</span></td><td><span class="pill ${out?"out":"stock"}">${status}</span></td><td><button class="pill copy" data-copy="${safe(p.model)}">COPY</button></td></tr>`;
+ }).join("");
+ document.querySelectorAll("[data-copy]").forEach(b=>b.onclick=async()=>{try{await navigator.clipboard.writeText(b.dataset.copy);b.textContent="COPIED";setTimeout(()=>b.textContent="COPY",1200)}catch(e){b.textContent="SELECT"}})
+}
+$("searchInput").addEventListener("input",render);
+$("clearBtn").onclick=()=>{$("searchInput").value="";activeBrand="ALL";makeButtons();render()};
+$("refreshBtn").onclick=loadAll;
+$("themeBtn").onclick=()=>{document.body.classList.toggle("dark");localStorage.setItem("ft-dark",document.body.classList.contains("dark")?"1":"0")};
+if(localStorage.getItem("ft-dark")==="1")document.body.classList.add("dark");
+$("year").textContent=new Date().getFullYear();
+$("brandCount").textContent=bn(SHEETS.length);
+makeButtons();loadAll();
+</script>
+</body>
+</html>
