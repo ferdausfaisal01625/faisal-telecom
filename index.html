@@ -5,280 +5,909 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#101b35">
 <title>FAISAL TELECOM | Display Price & Stock List</title>
+
 <style>
-:root{--navy:#101b35;--gold:#f5bd45;--bg:#f3f6fb;--card:#fff;--text:#172033;--muted:#738096;--line:#e5eaf2;--green:#138a55;--red:#d94343;--blue:#2866c7;--shadow:0 8px 26px rgba(20,39,72,.08)}
+:root{
+ --navy:#101b35;
+ --gold:#f5bd45;
+ --bg:#f3f6fb;
+ --card:#fff;
+ --text:#172033;
+ --muted:#738096;
+ --line:#e5eaf2;
+ --green:#138a55;
+ --red:#d94343;
+ --shadow:0 8px 26px rgba(20,39,72,.08);
+}
+
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,"Noto Sans Bengali",sans-serif}
-header{background:linear-gradient(125deg,var(--navy),#20375f);color:#fff;position:sticky;top:0;z-index:10;box-shadow:0 5px 20px #0c19352a}
-.top{max-width:1180px;margin:auto;padding:17px 16px 13px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.logo{display:flex;align-items:center;gap:11px}
-.logo-mark{width:43px;height:43px;border-radius:13px;background:var(--gold);color:var(--navy);display:grid;place-items:center;font-weight:900;font-size:20px;box-shadow:0 4px 12px #0003}
-.brand-name{font-weight:900;font-size:21px;letter-spacing:.7px}
-.tagline{font-size:11px;color:#c7d2e4;margin-top:3px;letter-spacing:1.2px}
-.actions{display:flex;gap:8px}
-.icon-btn{border:1px solid #ffffff40;background:#ffffff12;color:white;border-radius:10px;padding:9px 11px;cursor:pointer}
-.offer{background:var(--gold);color:#172033;font-weight:700;font-size:12px;padding:8px 12px;text-align:center;overflow:hidden;white-space:nowrap}
-main{max-width:1180px;margin:20px auto;padding:0 14px}
-.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow);margin-bottom:15px}
-.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
-.section-head h2{font-size:15px;margin:0;color:var(--navy)}
-.section-head span{font-size:11px;color:var(--muted)}
-.brands{display:flex;flex-wrap:wrap;gap:8px}
-.brand-btn{border:1px solid var(--line);background:#f8faff;color:#34415a;border-radius:9px;padding:9px 12px;font-size:12px;font-weight:700;cursor:pointer;transition:.18s}
-.brand-btn:hover{border-color:#c5a04c}
-.brand-btn.active{background:var(--navy);border-color:var(--navy);color:#fff;box-shadow:0 4px 10px #101b3528}
-.search-row{display:flex;gap:9px;margin:0}
-.search{width:100%;border:1px solid var(--line);border-radius:11px;padding:13px 14px;font-size:14px;outline:none;background:#fbfcff}
-.search:focus{border-color:#7895c7;box-shadow:0 0 0 3px #2866c714}
-.clear{border:0;border-radius:10px;background:#edf1f7;color:#34415a;padding:0 15px;font-weight:700;cursor:pointer}
-.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}
-table{width:100%;border-collapse:collapse;min-width:570px}
-th{background:#f1f4f9;color:#53627a;font-size:11px;text-align:left;padding:12px 13px;letter-spacing:.3px}
-td{padding:13px;border-top:1px solid var(--line);font-size:13px}
-tbody tr:hover{background:#fafcff}
-.model{font-weight:750;color:#1a2944}
-.price{font-weight:800;color:var(--navy);white-space:nowrap}
-.pill{display:inline-block;border-radius:6px;padding:5px 8px;font-size:10px;font-weight:800}
-.box-yes{background:#e6f6ee;color:#147b4c}
-.box-no{background:#fff0e7;color:#b65a1a}
-.stock{background:#e9f0ff;color:#285bb1}
-.out{background:#ffebeb;color:#c33333}
-.copy{background:#eaf1ff;color:#2866c7;border:0;cursor:pointer}
-.empty,.loading,.error{padding:28px 12px;text-align:center;color:var(--muted);font-size:13px}
+
+body{
+ margin:0;
+ background:var(--bg);
+ color:var(--text);
+ font-family:Arial,"Noto Sans Bengali",sans-serif;
+}
+
+header{
+ background:linear-gradient(125deg,var(--navy),#20375f);
+ color:#fff;
+ position:sticky;
+ top:0;
+ z-index:10;
+ box-shadow:0 5px 20px #0c19352a;
+}
+
+.top{
+ max-width:1180px;
+ margin:auto;
+ padding:17px 16px 13px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:12px;
+}
+
+.logo{
+ display:flex;
+ align-items:center;
+ gap:11px;
+}
+
+.logo-mark{
+ width:43px;
+ height:43px;
+ border-radius:13px;
+ background:var(--gold);
+ color:var(--navy);
+ display:grid;
+ place-items:center;
+ font-weight:900;
+ font-size:20px;
+}
+
+.brand-name{
+ font-weight:900;
+ font-size:21px;
+ letter-spacing:.7px;
+}
+
+.tagline{
+ font-size:11px;
+ color:#c7d2e4;
+ margin-top:3px;
+ letter-spacing:1.2px;
+}
+
+.actions{
+ display:flex;
+ gap:8px;
+}
+
+.icon-btn{
+ border:1px solid #ffffff40;
+ background:#ffffff12;
+ color:white;
+ border-radius:10px;
+ padding:9px 11px;
+ cursor:pointer;
+ font-size:18px;
+}
+
+/* CONTINUOUS WELCOME MARQUEE */
+.offer{
+ background:var(--gold);
+ color:#172033;
+ overflow:hidden;
+ white-space:nowrap;
+ padding:9px 0;
+ font-size:13px;
+ font-weight:800;
+}
+
+.offer-track{
+ display:flex;
+ width:max-content;
+ animation:marquee 22s linear infinite;
+}
+
+.offer-content{
+ flex-shrink:0;
+ padding-right:35px;
+}
+
+@keyframes marquee{
+ from{transform:translateX(0)}
+ to{transform:translateX(-50%)}
+}
+
+main{
+ max-width:1180px;
+ margin:20px auto;
+ padding:0 14px;
+}
+
+.panel{
+ background:var(--card);
+ border:1px solid var(--line);
+ border-radius:16px;
+ padding:16px;
+ box-shadow:var(--shadow);
+ margin-bottom:15px;
+}
+
+.section-head{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:10px;
+ margin-bottom:12px;
+}
+
+.section-head h2{
+ font-size:15px;
+ margin:0;
+ color:var(--navy);
+}
+
+.section-head span{
+ font-size:11px;
+ color:var(--muted);
+}
+
+.brands{
+ display:flex;
+ flex-wrap:wrap;
+ gap:8px;
+}
+
+.brand-btn{
+ border:1px solid var(--line);
+ background:#f8faff;
+ color:#34415a;
+ border-radius:9px;
+ padding:9px 12px;
+ font-size:12px;
+ font-weight:700;
+ cursor:pointer;
+ transition:.18s;
+}
+
+.brand-btn:hover{
+ border-color:#c5a04c;
+}
+
+.brand-btn.active{
+ background:var(--navy);
+ border-color:var(--navy);
+ color:#fff;
+ box-shadow:0 4px 10px #101b3528;
+}
+
+/* SEARCH */
+.search-row{
+ display:flex;
+ gap:9px;
+ margin:0;
+}
+
+.search{
+ width:100%;
+ min-width:0;
+ border:1px solid var(--line);
+ border-radius:11px;
+ padding:13px 14px;
+ font-size:14px;
+ outline:none;
+ background:#fbfcff;
+}
+
+.search:focus{
+ border-color:#7895c7;
+ box-shadow:0 0 0 3px #2866c714;
+}
+
+.clear{
+ border:0;
+ border-radius:10px;
+ background:#edf1f7;
+ color:#34415a;
+ padding:0 15px;
+ font-weight:700;
+ cursor:pointer;
+}
+
+/* TABLE - THREE VISIBLE COLUMNS */
+.table-wrap{
+ width:100%;
+ overflow:hidden;
+ border:1px solid var(--line);
+ border-radius:12px;
+}
+
+table{
+ width:100%;
+ min-width:0;
+ table-layout:fixed;
+ border-collapse:collapse;
+}
+
+th{
+ background:#f1f4f9;
+ color:#53627a;
+ font-size:12px;
+ text-align:left;
+ padding:13px 10px;
+ letter-spacing:.3px;
+}
+
+th:nth-child(1),td:nth-child(1){width:34%}
+th:nth-child(2),td:nth-child(2){width:43%}
+th:nth-child(3),td:nth-child(3){width:23%}
+
+td{
+ padding:13px 10px;
+ border-top:1px solid var(--line);
+ font-size:13px;
+ overflow-wrap:anywhere;
+}
+
+tbody tr:hover{
+ background:#fafcff;
+}
+
+.model{
+ font-weight:750;
+ color:#1a2944;
+ overflow-wrap:anywhere;
+}
+
+.price{
+ font-weight:800;
+ color:var(--navy);
+ white-space:normal;
+ overflow-wrap:anywhere;
+}
+
+.pill{
+ display:inline-block;
+ border-radius:6px;
+ padding:5px 8px;
+ font-size:10px;
+ font-weight:800;
+ overflow-wrap:anywhere;
+}
+
+.box-yes{
+ background:#e6f6ee;
+ color:#147b4c;
+}
+
+.box-no{
+ background:#fff0e7;
+ color:#b65a1a;
+}
+
+.stock{
+ background:#e9f0ff;
+ color:#285bb1;
+}
+
+.empty,.loading,.error{
+ padding:28px 12px;
+ text-align:center;
+ color:var(--muted);
+ font-size:13px;
+}
+
 .error{color:var(--red)}
-footer{text-align:center;color:#8792a4;font-size:11px;padding:20px 10px 30px}
+
+footer{
+ text-align:center;
+ color:#8792a4;
+ font-size:11px;
+ padding:20px 10px 30px;
+}
 
 /* DARK MODE */
-body.dark{--bg:#0c1424;--card:#131f34;--text:#e8edf7;--muted:#9ba9bf;--line:#273650;--navy:#e7edf8;--shadow:0 8px 26px #0003}
-body.dark .section-head h2,body.dark .price,body.dark .model{color:#edf2fb}
-body.dark .brand-btn{background:#18263e;color:#dbe5f5;border-color:#2a3b59}
-body.dark .brand-btn.active{background:#e9b94e;color:#172033}
-body.dark .search{background:#0f1a2d;color:#fff;border-color:#2a3b59}
-body.dark .search::placeholder{color:#aab7ca;opacity:1}
-body.dark th{background:#1b2a43;color:#b9c7db}
-body.dark tbody tr:hover{background:#192842}
-body.dark td{color:#e8edf7}
-body.dark .model{color:#f2f5fc!important}
-body.dark .table-wrap{border-color:#344763}
-body.dark tbody tr{background:#131f34}
-body.dark .copy{background:#1c3155;color:#a9caff}
-body.dark .clear{background:#253550;color:#e4ecf8}
+body.dark{
+ --bg:#0c1424;
+ --card:#131f34;
+ --text:#e8edf7;
+ --muted:#9ba9bf;
+ --line:#273650;
+ --navy:#e7edf8;
+ --shadow:0 8px 26px #0003;
+}
 
+body.dark .section-head h2,
+body.dark .price,
+body.dark .model{
+ color:#edf2fb;
+}
+
+body.dark .brand-btn{
+ background:#18263e;
+ color:#dbe5f5;
+ border-color:#2a3b59;
+}
+
+body.dark .brand-btn.active{
+ background:#e9b94e;
+ color:#172033;
+}
+
+body.dark .search{
+ background:#0f1a2d;
+ color:#fff;
+ border-color:#2a3b59;
+}
+
+body.dark .search::placeholder{
+ color:#aab7ca;
+ opacity:1;
+}
+
+body.dark th{
+ background:#1b2a43;
+ color:#b9c7db;
+}
+
+body.dark tbody tr:hover{
+ background:#192842;
+}
+
+body.dark td{
+ color:#e8edf7;
+}
+
+body.dark .model{
+ color:#f2f5fc!important;
+}
+
+body.dark .table-wrap{
+ border-color:#344763;
+}
+
+body.dark tbody tr{
+ background:#131f34;
+}
+
+body.dark .clear{
+ background:#253550;
+ color:#e4ecf8;
+}
+
+/* MOBILE */
 @media(max-width:650px){
-.top{padding:13px 12px}
-.brand-name{font-size:17px}
-.logo-mark{width:39px;height:39px}
-.panel{padding:13px}
-.brand-btn{padding:8px 10px;font-size:11px}
-.actions .icon-btn{padding:8px}
-.search{font-size:13px}
+
+ .top{
+  padding:13px 12px;
+ }
+
+ .brand-name{
+  font-size:17px;
+ }
+
+ .logo-mark{
+  width:39px;
+  height:39px;
+ }
+
+ .panel{
+  padding:13px;
+ }
+
+ .brand-btn{
+  padding:8px 10px;
+  font-size:11px;
+ }
+
+ .actions .icon-btn{
+  padding:8px;
+ }
+
+ .search{
+  font-size:13px;
+ }
+
+ th,td{
+  padding:11px 7px;
+  font-size:12px;
+ }
+
+ .model{
+  font-size:13px;
+ }
+
+ .price{
+  font-size:12px;
+ }
+
+ .pill{
+  font-size:9px;
+  padding:4px 5px;
+ }
+
+ .offer{
+  font-size:12px;
+ }
+
 }
 </style>
 </head>
+
 <body>
 
 <header>
  <div class="top">
+
   <div class="logo">
    <div class="logo-mark">FT</div>
+
    <div>
     <div class="brand-name">FAISAL TELECOM</div>
     <div class="tagline">DISPLAY PRICE & STOCK LIST</div>
    </div>
   </div>
+
   <div class="actions">
    <button class="icon-btn" id="refreshBtn" title="Refresh">↻</button>
    <button class="icon-btn" id="themeBtn" title="Dark mode">☾</button>
   </div>
+
  </div>
- <div class="offer">WELCOME TO FAISAL TELECOM&nbsp; • &nbsp;LATEST DISPLAY MODEL & PRICE LIST&nbsp; • &nbsp;UPDATED FROM GOOGLE SHEETS</div>
+
+ <div class="offer">
+  <div class="offer-track">
+
+   <div class="offer-content">
+    WELCOME TO FAISAL TELECOM &nbsp; • &nbsp;
+    LATEST DISPLAY MODEL & PRICE LIST &nbsp; • &nbsp;
+    UPDATED FROM GOOGLE SHEETS &nbsp; • &nbsp;
+   </div>
+
+   <div class="offer-content">
+    WELCOME TO FAISAL TELECOM &nbsp; • &nbsp;
+    LATEST DISPLAY MODEL & PRICE LIST &nbsp; • &nbsp;
+    UPDATED FROM GOOGLE SHEETS &nbsp; • &nbsp;
+   </div>
+
+  </div>
+ </div>
 </header>
 
 <main>
 
- <!-- SEARCH BAR AT TOP -->
+ <!-- SEARCH BAR -->
  <section class="panel search-panel">
+
   <div class="search-row">
-   <input id="searchInput" class="search" type="search" placeholder="মডেলের নাম লিখে সার্চ করুন...">
+   <input
+    id="searchInput"
+    class="search"
+    type="search"
+    placeholder="মডেলের নাম লিখে সার্চ করুন..."
+   >
+
    <button class="clear" id="clearBtn">Clear</button>
   </div>
+
  </section>
 
  <!-- BRAND FILTER -->
  <section class="panel">
+
   <div class="section-head">
    <h2>ব্র্যান্ড নির্বাচন করুন</h2>
    <span id="brandLabel">সব ব্র্যান্ড</span>
   </div>
+
   <div class="brands" id="brandButtons"></div>
+
  </section>
 
  <!-- PRODUCT LIST -->
  <section class="panel">
+
   <div class="section-head">
    <h2 id="listTitle">সকল ব্র্যান্ডের মডেল</h2>
    <span id="statusText">ডেটা লোড হচ্ছে...</span>
   </div>
+
   <div class="table-wrap">
+
    <table>
+
     <thead>
      <tr>
       <th>MODEL</th>
       <th>PRICE</th>
       <th>BOX</th>
-      <th>STATUS</th>
-      <th></th>
      </tr>
     </thead>
+
     <tbody id="productRows">
-     <tr><td colspan="5" class="loading">Google Sheets থেকে ডেটা লোড হচ্ছে...</td></tr>
+     <tr>
+      <td colspan="3" class="loading">
+       Google Sheets থেকে ডেটা লোড হচ্ছে...
+      </td>
+     </tr>
     </tbody>
+
    </table>
+
   </div>
+
  </section>
+
 </main>
 
-<footer>© <span id="year"></span> FAISAL TELECOM · All Rights Reserved</footer>
+<footer>
+ © <span id="year"></span> FAISAL TELECOM · All Rights Reserved
+</footer>
 
 <script>
+
+/* GOOGLE SHEETS DATABASE */
+
 const SHEETS = [
+
  {name:"Samsung",id:"1tJmBIN94tOU94oWvLerg7hhtSMj3Y2XE1WbObtqLBcY"},
+
  {name:"Redmi / Xiaomi / Poco",id:"1c3fAf14_4LPjwwyhC_o4gcy1gUkZZRXQkYUGfdklhwU"},
+
  {name:"Vivo",id:"1iz0L2L6j5JdpveNlQAoWr8byLdxf6vI1YmqgPcN-CLE"},
+
  {name:"Oppo / Realme",id:"12EKUm36cKzrZQzmuAJ5eRixOFmOgoTtjV5Rt3jgilKo"},
+
  {name:"OnePlus",id:"129X_GaCTsj5GAOzfPf-po4Vq_kIy_DFYMPSf7ezJQZo"},
+
  {name:"Huawei",id:"1p63MyaipRDmgOu7ks_0isw4vAdMhfEJXIZLS_dyqfqk"},
+
  {name:"Tecno / Infinix",id:"14LN5S2FRbcdaTaqIwCpGua15WorsbSxfSrFKVMu4YOg"},
+
  {name:"Honor",id:"1wqxFM4lyjNcN_Mvu1xwxLcAn6ZcPfI3OUV2n7JYUoKs"},
+
  {name:"Google Pixel",id:"1h0y7nMc0YMa-lDXlYmYQUK0-qd-lV9PskAxM-aKLs0s"},
+
  {name:"Motorola",id:"1ofdnhDM8kvYMxMzTIBtB4A5r5vGsQOBPo9L85gYTiUs"},
+
  {name:"Nokia",id:"1klloMEx-BJptoiLURG7atMZQX3gxr1_oxpliZzc1xcg"},
+
  {name:"Symphony / Benco / itel",id:"1rQCD7h7JJJYMKwLMOLNYIp57KplVuVltd1GHG7AJSn8"},
+
  {name:"Walton",id:"1nLkmCNbNWWAerjmhTmQr3J56q0waaIH-zNqoidA3dfM"},
+
  {name:"iPhone",id:"1e5OjAfe1gz9D7WnvVyk7DyPX_p9-dXQ7aGS64flvTwc"}
+
 ];
 
-const $=id=>document.getElementById(id);
-let allProducts=[],activeBrand="ALL",loadingErrors=[];
+const $ = id => document.getElementById(id);
+
+let allProducts = [];
+let activeBrand = "ALL";
+let loadingErrors = [];
+
+
+/* HEADER NORMALIZATION */
 
 function normalize(v){
- return String(v??"").trim().toLowerCase().replace(/[\s_-]+/g,"");
+ return String(v ?? "")
+ .trim()
+ .toLowerCase()
+ .replace(/[\s_-]+/g,"");
 }
+
 function pick(row,keys){
- const k=Object.keys(row||{});
+
+ const k = Object.keys(row || {});
+
  for(const wanted of keys){
-  const found=k.find(x=>normalize(x)===normalize(wanted));
-  if(found)return row[found];
+
+  const found = k.find(x =>
+   normalize(x) === normalize(wanted)
+  );
+
+  if(found) return row[found];
+
  }
+
  return "";
+
 }
+
+
+/* BRAND BUTTONS */
+
 function makeButtons(){
- const box=$("brandButtons");
- box.innerHTML="";
- [{name:"সব ব্র্যান্ড",key:"ALL"},...SHEETS.map(s=>({name:s.name,key:s.name}))].forEach(b=>{
-  const btn=document.createElement("button");
-  btn.className="brand-btn"+(activeBrand===b.key?" active":"");
-  btn.textContent=b.name;
-  btn.onclick=()=>{
-   activeBrand=b.key;
+
+ const box = $("brandButtons");
+
+ box.innerHTML = "";
+
+ [
+  {name:"সব ব্র্যান্ড",key:"ALL"},
+  ...SHEETS.map(s => ({
+   name:s.name,
+   key:s.name
+  }))
+
+ ].forEach(b => {
+
+  const btn = document.createElement("button");
+
+  btn.className =
+   "brand-btn" +
+   (activeBrand === b.key ? " active" : "");
+
+  btn.textContent = b.name;
+
+  btn.onclick = () => {
+
+   activeBrand = b.key;
+
    makeButtons();
    render();
-  };
-  box.appendChild(btn);
- });
-}
-async function loadSheet(sheet){
- const url=`https://opensheet.elk.sh/${sheet.id}/Sheet1`;
- const res=await fetch(url,{cache:"no-store"});
- if(!res.ok)throw new Error("HTTP "+res.status);
- const data=await res.json();
- if(!Array.isArray(data))throw new Error("Invalid sheet data");
- return data.map(r=>({
-  brand:sheet.name,
-  model:pick(r,["Model","Mobile Model","Name"]),
-  price:pick(r,["Price"," দাম","Selling Price"]),
-  box:pick(r,["Box","Box Status"]),
-  status:pick(r,["Status","Stock","Availability"])
- })).filter(r=>r.model);
-}
-async function loadAll(){
- $("statusText").textContent="ডেটা লোড হচ্ছে...";
- $("productRows").innerHTML='<tr><td colspan="5" class="loading">Google Sheets থেকে ডেটা লোড হচ্ছে...</td></tr>';
- loadingErrors=[];
- const results=await Promise.allSettled(SHEETS.map(loadSheet));
- allProducts=[];
- results.forEach((r,i)=>{
-  if(r.status==="fulfilled")allProducts.push(...r.value);
-  else loadingErrors.push(SHEETS[i].name);
- });
- $("statusText").textContent=loadingErrors.length?`${loadingErrors.length}টি শিট লোড হয়নি`:"সর্বশেষ ডেটা";
- render();
-}
-function safe(v){
- return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-}
-function render(){
- const q=$("searchInput").value.trim().toLowerCase();
- const rows=allProducts.filter(p=>
-  (activeBrand==="ALL"||p.brand===activeBrand)&&
-  (`${p.model} ${p.brand}`.toLowerCase().includes(q))
- );
- $("brandLabel").textContent=activeBrand==="ALL"?"সব ব্র্যান্ড":activeBrand;
- $("listTitle").textContent=activeBrand==="ALL"?"সকল ব্র্যান্ডের মডেল":activeBrand+" মডেল";
 
- if(!rows.length){
-  $("productRows").innerHTML=`<tr><td colspan="5" class="empty">${allProducts.length?"কোনো মডেল পাওয়া যায়নি":"ডেটা পাওয়া যায়নি। Google Sheets sharing ও Sheet1 নাম পরীক্ষা করুন।"}</td></tr>`;
-  return;
+  };
+
+  box.appendChild(btn);
+
+ });
+
+}
+
+
+/* LOAD INDIVIDUAL GOOGLE SHEET */
+
+async function loadSheet(sheet){
+
+ const url =
+  `https://opensheet.elk.sh/${sheet.id}/Sheet1`;
+
+ const res = await fetch(url,{cache:"no-store"});
+
+ if(!res.ok){
+  throw new Error("HTTP " + res.status);
  }
 
- $("productRows").innerHTML=rows.map(p=>{
-  const out=/out|নাই|শেষ|স্টক নেই/i.test(String(p.status));
-  const boxYes=/yes|হ্যাঁ|আছে|with/i.test(String(p.box));
-  const boxLabel=p.box?safe(p.box):"—";
-  const status=p.status?safe(p.status):(out?"STOCK OUT":"IN STOCK");
+ const data = await res.json();
 
-  return `<tr>
-   <td>
-    <div class="model">${safe(p.model)}</div>
-    <div style="font-size:10px;color:var(--muted);margin-top:4px">${safe(p.brand)}</div>
-   </td>
-   <td class="price">${safe(p.price)||"দাম জানতে যোগাযোগ করুন"}</td>
-   <td><span class="pill ${boxYes?"box-yes":"stock"}">${boxLabel}</span></td>
-   <td><span class="pill ${out?"out":"stock"}">${status}</span></td>
-   <td><button class="pill copy" data-copy="${safe(p.model)}">COPY</button></td>
-  </tr>`;
- }).join("");
+ if(!Array.isArray(data)){
+  throw new Error("Invalid sheet data");
+ }
 
- document.querySelectorAll("[data-copy]").forEach(b=>{
-  b.onclick=async()=>{
-   try{
-    await navigator.clipboard.writeText(b.dataset.copy);
-    b.textContent="COPIED";
-    setTimeout(()=>b.textContent="COPY",1200);
-   }catch(e){
-    b.textContent="SELECT";
-   }
-  };
- });
+ return data.map(r => ({
+
+  brand:sheet.name,
+
+  model:pick(r,[
+   "Model",
+   "Mobile Model",
+   "Name"
+  ]),
+
+  price:pick(r,[
+   "Price",
+   "দাম",
+   "Selling Price"
+  ]),
+
+  box:pick(r,[
+   "Box",
+   "Box Status"
+  ]),
+
+  status:pick(r,[
+   "Status",
+   "Stock",
+   "Availability"
+  ])
+
+ })).filter(r => r.model);
+
 }
 
+
+/* LOAD ALL BRANDS */
+
+async function loadAll(){
+
+ $("statusText").textContent = "ডেটা লোড হচ্ছে...";
+
+ $("productRows").innerHTML =
+  '<tr><td colspan="3" class="loading">Google Sheets থেকে ডেটা লোড হচ্ছে...</td></tr>';
+
+ loadingErrors = [];
+
+ const results = await Promise.allSettled(
+  SHEETS.map(loadSheet)
+ );
+
+ allProducts = [];
+
+ results.forEach((r,i) => {
+
+  if(r.status === "fulfilled"){
+   allProducts.push(...r.value);
+  }else{
+   loadingErrors.push(SHEETS[i].name);
+  }
+
+ });
+
+ $("statusText").textContent =
+  loadingErrors.length
+  ? `${loadingErrors.length}টি শিট লোড হয়নি`
+  : "সর্বশেষ ডেটা";
+
+ render();
+
+}
+
+
+/* SAFE TEXT */
+
+function safe(v){
+
+ return String(v ?? "").replace(
+  /[&<>"']/g,
+  c => ({
+   "&":"&amp;",
+   "<":"&lt;",
+   ">":"&gt;",
+   '"':"&quot;",
+   "'":"&#39;"
+  }[c])
+ );
+
+}
+
+
+/* DISPLAY PRODUCTS */
+
+function render(){
+
+ const q = $("searchInput").value
+  .trim()
+  .toLowerCase();
+
+ const rows = allProducts.filter(p =>
+
+  (activeBrand === "ALL" ||
+   p.brand === activeBrand) &&
+
+  (`${p.model} ${p.brand}`.toLowerCase().includes(q))
+
+ );
+
+ $("brandLabel").textContent =
+  activeBrand === "ALL"
+  ? "সব ব্র্যান্ড"
+  : activeBrand;
+
+ $("listTitle").textContent =
+  activeBrand === "ALL"
+  ? "সকল ব্র্যান্ডের মডেল"
+  : activeBrand + " মডেল";
+
+
+ if(!rows.length){
+
+  $("productRows").innerHTML =
+   `<tr>
+    <td colspan="3" class="empty">
+     ${allProducts.length
+      ? "কোনো মডেল পাওয়া যায়নি"
+      : "ডেটা পাওয়া যায়নি। Google Sheets sharing ও Sheet1 নাম পরীক্ষা করুন।"
+     }
+    </td>
+   </tr>`;
+
+  return;
+
+ }
+
+
+ $("productRows").innerHTML = rows.map(p => {
+
+  const boxValue = String(p.box || "").trim();
+
+  const boxYes =
+   /yes|হ্যাঁ|আছে|with/i.test(boxValue);
+
+  const boxLabel =
+   boxValue ? safe(boxValue) : "—";
+
+  return `
+   <tr>
+
+    <td>
+     <div class="model">${safe(p.model)}</div>
+
+     <div style="
+      font-size:10px;
+      color:var(--muted);
+      margin-top:4px;
+     ">
+      ${safe(p.brand)}
+     </div>
+    </td>
+
+    <td class="price">
+     ${safe(p.price) || "দাম জানতে যোগাযোগ করুন"}
+    </td>
+
+    <td>
+     <span class="pill ${
+      boxYes ? "box-yes" : "stock"
+     }">
+      ${boxLabel}
+     </span>
+    </td>
+
+   </tr>
+  `;
+
+ }).join("");
+
+}
+
+
+/* SEARCH */
+
 $("searchInput").addEventListener("input",render);
-$("clearBtn").onclick=()=>{
- $("searchInput").value="";
- activeBrand="ALL";
+
+
+/* CLEAR SEARCH */
+
+$("clearBtn").onclick = () => {
+
+ $("searchInput").value = "";
+
+ activeBrand = "ALL";
+
  makeButtons();
  render();
-};
-$("refreshBtn").onclick=loadAll;
-$("themeBtn").onclick=()=>{
- document.body.classList.toggle("dark");
- localStorage.setItem("ft-dark",document.body.classList.contains("dark")?"1":"0");
-};
-if(localStorage.getItem("ft-dark")==="1")document.body.classList.add("dark");
 
-$("year").textContent=new Date().getFullYear();
+};
+
+
+/* REFRESH */
+
+$("refreshBtn").onclick = loadAll;
+
+
+/* DARK MODE */
+
+$("themeBtn").onclick = () => {
+
+ document.body.classList.toggle("dark");
+
+ localStorage.setItem(
+  "ft-dark",
+  document.body.classList.contains("dark") ? "1" : "0"
+ );
+
+};
+
+if(localStorage.getItem("ft-dark") === "1"){
+ document.body.classList.add("dark");
+}
+
+
+/* CURRENT YEAR */
+
+$("year").textContent = new Date().getFullYear();
+
+
+/* START WEBSITE */
+
 makeButtons();
 loadAll();
+
 </script>
+
 </body>
 </html>
